@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?><!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+   contributor license agreements.  See the NOTICE file distributed with
+   this work for additional information regarding copyright ownership.
+   The ASF licenses this file to You under the Apache License, Version 2.0
+   (the "License"); you may not use this file except in compliance with
+   the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+--><configuration>
+    <property>
+        <name>hive.server2.thrift.port</name>
+        <value>10002</value>
+    </property>
+    <property>
+        <name>hive.server2.thrift.bind.host</name>
+        <value>hadoop00</value>
+    </property>
+    
+    <property>
+		<name>hive.server2.active.passive.ha.enable</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>datanucleus.schema.autoCreateAll</name>
+		<value>true</value>
+	</property>
+
+
+    <property>
+        <name>hive.server2.authentication</name>
+        <value>KERBEROS</value>
+    </property>
+    <property>
+        <name>hive.server2.authentication.kerberos.principal</name>
+        <value>root/hadoop00@EXAMPLE.COM</value>
+    </property>
+    <property>
+        <name>hive.server2.authentication.kerberos.keytab</name>
+        <value>/usr/local/hive-3.1.0/conf/root.keytab</value>
+    </property>
+    <property>
+        <name>hive.metastore.sasl.enabled</name>
+        <value>true</value>
+    </property>
+    <property>
+        <name>hive.metastore.kerberos.keytab.file</name>
+        <value>/usr/local/hive-3.1.0/conf/root.keytab</value>
+    </property>
+    <property>
+        <name>hive.metastore.kerberos.principal</name>
+        <value>root/_HOST@EXAMPLE.COM</value>
+    </property>
+
+    <property>
+        <name>hive.metastore.authentication.type</name>
+        <value>KERBEROS</value>
+    </property>
+
+
+    <property>
+        <name>hive.hdfs.authentication.type</name>
+        <value>KERBEROS</value>
+    </property>
+    <property>
+        <name>hive.hdfs.presto.principal</name>
+        <value>root/_HOST@EXAMPLE.COM</value>
+    </property>
+    <property>
+        <name>hive.hdfs.presto.keytab</name>
+        <value>/usr/local/hive-3.1.0/conf/root.keytab</value>
+    </property>
+
+    <property>
+        <name>hive.server2.thrift.sasl.qop</name>
+        <value>auth-conf</value>
+    </property>
+<!-- hive支持insert/update/delete -->
+	<property>
+		<name>hive.support.concurrency</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>hive.enforce.bucketing</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>hive.exec.dynamic.partition.mode</name>
+		<value>nonstrict</value>
+	</property>
+	<property>
+		<name>hive.txn.manager</name>
+		<value>org.apache.hadoop.hive.ql.lockmgr.DbTxnManager</value>
+	</property>
+	<property>
+		<name>hive.compactor.initiator.on</name>
+		<value>true</value>
+	</property>
+	<property>
+		<name>hive.compactor.worker.threads</name>
+		<value>1</value>
+	</property>
+	<property>
+		<name>hive.in.test</name>
+		<value>true</value>
+	</property>
+
+<!-- 权限 -->
+<property>
+<name>hive.users.in.admin.role</name>
+<value>root</value>
+<description>定义超级管理员 启动的时候会自动创建Comma separated list of users who are in admin role for bootstrapping.
+More users can be added in ADMIN role later.</description>
+</property>
+<property>
+<name>hive.metastore.authorization.storage.checks</name>
+<value>true</value>
+</property>
+<property>
+<name>hive.metastore.execute.setugi</name>
+<value>false</value>
+</property>
+<property>
+<name>hive.security.authorization.enabled</name>
+<value>false</value>
+<description>开启权限 enable or disable thehive client authorization</description>
+</property>
+<property>
+<name>hive.security.authorization.createtable.owner.grants</name>
+<value>ALL</value>
+<description>表的创建者对表拥有所有权限the privileges automaticallygranted to the owner whenever a table gets created. An example like"select,drop" will grant select and drop privilege to the owner ofthe table</description>
+</property>
+<property>
+<name>hive.security.authorization.task.factory</name>
+<value>org.apache.hadoop.hive.ql.parse.authorization.HiveAuthorizationTaskFactoryImpl</value>
+<description>进行权限控制的配置。</description>
+</property>
+<!--
+<property>
+<name>hive.semantic.analyzer.hook</name>
+<value>com.hive.HiveAdmin</value>
+<description>使用钩子程序，识别超级管理员，进行授权控制。</description>
+</property>
+-->
+<property>
+<name>hive.users.in.admin.role</name>
+<value>root</value>
+<description>指定的用户为admin角色，多个用户以逗号分隔
+Comma separated list of users who are in admin role for bootstrapping.
+More users can be added in ADMIN role later.</description>
+</property>
+
+
+</configuration>
